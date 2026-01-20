@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm install --legacy-peer-deps)",
+      "Bash(npm run dev)",
+      "Bash(npm install lucide-react)",
+      "Bash(npm install lucide-react --legacy-peer-deps)",
+      "Bash(ls -la public/*svg)",
+      "Bash(ls -la public/*ocial* public/*twitter* public/*linkedin* public/*github*)",
+      "Bash(dir public /s)",
+      "Bash(findstr \".svg\")",
+      "Bash(dir public*.svg)",
+      "Bash(powershell Get-ChildItem -Path public -Recurse -Name *.svg)",
+      "Bash(dir \"C:\\\\Users\\\\Bisma Gondal\\\\Desktop\\\\spacefolio - Copy\\\\public\" /b)",
+      "Bash(findstr /i \"facebook\\\\|instagram\\\\|linkedin\\\\|youtube\\\\|whatsapp\\\\|twitter\\\\|social\\\\|icon\")",
+      "Bash(findstr /i social)",
+      "Bash(powershell Get-ChildItem -Path public -Recurse)",
+      "Bash(Select-String -Pattern \"social|facebook|instagram|linkedin|youtube|whatsapp|twitter\")",
+      "Bash(dir \"C:\\\\Users\\\\Bisma Gondal\\\\Desktop\\\\spacefolio - Copy\\\\public\")",
+      "Bash(findstr /i \"linkedin\\\\|whatsapp\\\\|instagram\\\\|facebook\\\\|youtube\")",
+      "Bash(findstr /i \"linkedin\\\\|whatsapp\\\\|instagram\\\\|facebook\\\\|youtube\\\\|discord\\\\|github\")",
+      "Bash(findstr /i \"linkedin\\\\|whatsapp\")",
+      "Bash(findstr -i \"linkedin\\\\|whatsapp\")",
+      "Bash(copy \"C:\\\\Users\\\\Bisma Gondal\\\\Desktop\\\\spacefolio - Copy\\\\public\\\\linkedin.svg\" \"C:\\\\Users\\\\Bisma Gondal\\\\Desktop\\\\spacefolio - Copy\\\\public\\\\linkedin.png\")",
+      "Bash(findstr -i \"fb\")",
+      "Bash(findstr -i \"facebook\")",
+      "Bash(findstr -i \"facebook\\\\|fb\")",
+      "Bash(findstr /i \".png\")",
+      "Bash(find \"C:/Users/Bisma Gondal/Desktop/spacefolio - Copy\" -name \"*.tsx\" -type f -exec grep -l \"projectsData\\\\|Project\" {} ;)",
+      "Bash(find \"C:/Users/Bisma Gondal/Desktop/spacefolio - Copy\" -name \"*.tsx\" -type f -exec grep -l \"process\\\\|#process\" {} ;)",
+      "Bash(find \"C:/Users/Bisma Gondal/Desktop/spacefolio - Copy\" -name \"*.tsx\" -type f -exec grep -l \"contact\\\\|#contact\" {} ;)",
+      "Bash(git branch -M main)",
+      "Bash(git add .)"
+    ]
+  }
+}
