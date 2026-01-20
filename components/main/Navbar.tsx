@@ -2,6 +2,7 @@
 
 import { Socials } from "@/constants/index";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 
@@ -12,7 +13,7 @@ const Navbar = () => {
    <nav className="w-full fixed top-0 left-0 z-50 bg-black/25 backdrop-blur-xl border-b border-white/20 shadow-lg">
   <div className="max-w-7xl mx-auto px-6 md:px-10 h-[65px] flex items-center justify-between">
     {/* Logo */}
-    <a href="/" className="flex items-center">
+    <Link href="/" className="flex items-center">
       <Image
         src="/my-logo.png"
         alt="logo"
@@ -23,7 +24,7 @@ const Navbar = () => {
       <span className="font-bold ml-2 hidden sm:block text-white drop-shadow">
         Bisma Gondal
       </span>
-    </a>
+    </Link>
 
     {/* Desktop Links */}
     <div className="hidden md:flex items-center gap-8 text-white">

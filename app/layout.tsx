@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import StarsCanvas from "@/components/main/StarBackground";
+import StarsCanvasWrapper from "@/components/main/StarsCanvasWrapper";
 import Navbar from "@/components/main/Navbar";
 import Footer from "@/components/main/Footer";
 import Skills from "@/components/main/Skills";
@@ -32,8 +32,8 @@ export default function RootLayout({
         className={`${inter.className} bg-[#030014] overflow-y-auto overflow-x-hidden`}
       >
         <Navbar />
-        <StarsCanvas />
-        
+        <StarsCanvasWrapper />
+
         {/* Main content wrapper */}
         <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8">
           {children}

@@ -106,7 +106,7 @@ const Footer = () => {
 
         {/* Logo */}
         <div>
-          <img
+          <Image
             src="/my-logo.png"
             id="#about-me"
             alt="logo"

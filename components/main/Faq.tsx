@@ -19,7 +19,14 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-const FAQItem = ({ question, answer, isOpen, onToggle }) => {
+interface FAQItemProps {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onToggle }) => {
   return (
     <div className="border border-gray-700 rounded-xl bg-gradient-to-br from-[#0b0b12] to-[#120b2e] hover:border-violet-600/50 transition-all duration-300">
       <button
@@ -54,7 +61,7 @@ const FAQItem = ({ question, answer, isOpen, onToggle }) => {
 };
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
     {
@@ -99,7 +106,7 @@ const FAQ = () => {
     }
   ];
 
-  const handleToggle = (index) => {
+  const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
