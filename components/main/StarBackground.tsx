@@ -4,9 +4,9 @@ import React, { useState, useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import { inSphere } from "maath/random";
-import type { Points as ThreePoints,  } from "three";
+import type { Points as ThreePoints } from "three";
 
-const StarBackground = (props: React.ComponentProps<"group">) => {
+export const StarBackground = (props: React.ComponentProps<"group">) => {
   const ref = useRef<ThreePoints>(null);
 
  const [sphere] = useState<Float32Array>(() => {
@@ -37,14 +37,16 @@ const StarBackground = (props: React.ComponentProps<"group">) => {
   );
 };
 
-const StarsCanvas = () => (
-  <div className="w-full h-auto fixed inset-0 z-[0] pointer-events-none">
-    <Canvas camera={{ position: [0, 0, 1] }}>
-      <Suspense fallback={null}>
-        <StarBackground />
-      </Suspense>
-    </Canvas>
-  </div>
-);
+const StarsCanvas = () => {
+  return (
+    <div className="w-full h-auto fixed inset-0 z-[0] pointer-events-none">
+      <Canvas camera={{ position: [0, 0, 1] }}>
+        <Suspense fallback={null}>
+          <StarBackground />
+        </Suspense>
+      </Canvas>
+    </div>
+  );
+};
 
 export default StarsCanvas;
