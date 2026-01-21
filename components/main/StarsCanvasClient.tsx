@@ -1,58 +1,47 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+
+// Create the dynamic component at the module level but with sequential imports
+const DynamicStarsScene = dynamic(
+  () => {
+    // Import and create the component in a way that avoids Promise.all issues
+    return import("@react-three/fiber").then(({ Canvas }) => {
+      // Then import StarBackground and create the combined component
+      return import("./StarBackground").then(({ StarBackground }) => {
+        const StarsScene = () => (
+          <Canvas camera={{ position: [0, 0, 1] }}>
+            <StarBackground />
+          </Canvas>
+        );
+        return { default: StarsScene };
+      });
+    });
+  },
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-auto fixed inset-0 z-[0] pointer-events-none" />
+    ),
+  }
+);
 
 const StarsCanvasClient = () => {
-  const [hasWindow, setHasWindow] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Only run on client-side
-    if (typeof window !== "undefined") {
-      setHasWindow(true);
-    }
+    setIsClient(true);
   }, []);
 
-  if (!hasWindow) {
-    // Server-side or early render - return empty div
+  // Only render the dynamic component after client-side mount
+  if (!isClient) {
     return <div className="w-full h-auto fixed inset-0 z-[0] pointer-events-none" />;
   }
 
-  // Dynamically import and render only on client
-  const DynamicCanvas = () => {
-    const [CanvasComponent, setCanvasComponent] = useState<React.ComponentType | null>(null);
-
-    useEffect(() => {
-      const loadComponents = async () => {
-        try {
-          // Import components separately to avoid Promise.all issues
-          const { Canvas } = await import("@react-three/fiber");
-          const { StarBackground } = await import("./StarBackground");
-
-          const CanvasWithBackground = () => (
-            <Canvas camera={{ position: [0, 0, 1] }}>
-              <StarBackground />
-            </Canvas>
-          );
-
-          setCanvasComponent(() => CanvasWithBackground);
-        } catch (error) {
-          console.error("Error loading 3D components:", error);
-        }
-      };
-
-      loadComponents();
-    }, []);
-
-    if (!CanvasComponent) {
-      return <div className="w-full h-auto fixed inset-0 z-[0] pointer-events-none" />;
-    }
-
-    return <CanvasComponent />;
-  };
-
   return (
     <div className="w-full h-auto fixed inset-0 z-[0] pointer-events-none">
-      <DynamicCanvas />
+      <DynamicStarsScene />
     </div>
   );
 };
